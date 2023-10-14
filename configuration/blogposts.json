@@ -1,0 +1,10 @@
+[
+    {
+        "Title": "My test post 1",
+        "Slug": "post1",
+        "DatePosted": "2023-10-15",
+        "GitHubId": 17383256,
+        "PreviewText": "My preview text",
+        "PreviewImagePath": ""
+    }
+]
