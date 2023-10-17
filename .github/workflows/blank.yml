@@ -1,0 +1,38 @@
+name: Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - master
+env:
+  VPS_WEB_DIRECTORY: /home/BestOfBlazor/wwwroot
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Restart BlazorSchool Redesign service
+      uses: garygrossgarten/github-action-ssh@master
+      with:
+        host: ${{ secrets.HOST }}
+        command: |
+                rm -r ${{ env.VPS_WEB_DIRECTORY }}/blog-posts
+                rm -r ${{ env.VPS_WEB_DIRECTORY }}/configuration
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        
+    - uses: actions/checkout@master
+    - name: Copy web via ssh
+    - uses: garygrossgarten/github-action-scp@master
+      with:
+        local: blog-posts
+        remote: ${{ env.VPS_WEB_DIRECTORY }}/blog-posts
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+    - uses: garygrossgarten/github-action-scp@master
+      with:
+        local: configuration
+        remote: ${{ env.VPS_WEB_DIRECTORY }}/configuration
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
