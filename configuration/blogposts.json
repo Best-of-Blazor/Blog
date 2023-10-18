@@ -1,10 +1,10 @@
 [
     {
-        "Title": "My test post 1",
-        "Slug": "post1",
-        "DatePosted": "2023-10-15",
-        "GitHubId": 17383256,
-        "PreviewText": "My preview text",
+        "Title": "Building the \"Best of Blazor\" Blog: A Peek into the Tech Stack",
+        "Slug": "best-of-blazor-tech-stack",
+        "DatePosted": "2023-10-17",
+        "GitHubId": 145576649,
+        "PreviewText": "Explore the technology stack powering \"Best of Blazor\" blog! Discover how Blazor and key tools come together to create an exceptional web experience for Blazor enthusiasts.",
         "PreviewImagePath": ""
     }
 ]
