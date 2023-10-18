@@ -10,7 +10,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Restart BlazorSchool Redesign service
+    - name: Remove old contents
       uses: garygrossgarten/github-action-ssh@master
       with:
         host: ${{ secrets.HOST }}
@@ -34,5 +34,15 @@ jobs:
         local: configuration
         remote: ${{ env.VPS_WEB_DIRECTORY }}/configuration
         host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+
+    - name: Restart service
+      uses: garygrossgarten/github-action-ssh@master
+      with:
+        host: ${{ secrets.HOST }}
+        command: |
+                systemctl daemon-reload
+                systemctl restart BestOfBlazor
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
